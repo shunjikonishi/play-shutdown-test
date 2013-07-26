@@ -10,10 +10,10 @@ import models.*;
 
 public class Application extends Controller {
 	
-	private static final String HEROKU_APP_NAME = System.getenv("HEROKU_APPLICATION_NAME");
-	private static final String HEROKU_API_KEY  = System.getenv("HEROKU_API_KEY");
+	public static final String HEROKU_APPLICATION_NAME = System.getenv("HEROKU_APPLICATION_NAME");
+//	public static final String HEROKU_API_KEY  = System.getenv("HEROKU_API_KEY");
 	
-	private static final String HOST;
+	public static final String HOST;
 	
 	static {
 		String s = null;
@@ -23,10 +23,16 @@ public class Application extends Controller {
 			e.printStackTrace();
 		}
 		HOST = s;
+		
+		Runtime.getRuntime().addShutdownHook(new Thread() {
+			public void run() {
+				Logger.info("ShutdownHook, Host=" + HOST + ", Thread=" + Thread.currentThread().getName());
+			}
+		});
 	}
 	
 	public static void index() {
-		String appname = HEROKU_APP_NAME;
+		String appname = HEROKU_APPLICATION_NAME;
 		String host = HOST;
 		render(host, appname);
 	}
