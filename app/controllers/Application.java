@@ -13,7 +13,8 @@ public class Application extends Controller {
 	private static final String HEROKU_API_KEY  = System.getenv("HEROKU_API_KEY");
 	
 	public static void index() {
-		render();
+		String appname = HEROKU_APP_NAME;
+		render(appname);
 	}
 	
 	public static void ok() {
