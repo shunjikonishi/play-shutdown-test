@@ -11,9 +11,11 @@ import controllers.Application;
 public class KickSleep extends Job {
 	
 	public void doJob() {
-		Logger.info("KickSleep, Host=" + Application.HOST + ", Thread=" + Thread.currentThread().getName());
-		String url = "http://" + Application.HEROKU_APPLICATION_NAME + ".herokuapp.com/application/sleep?ms=10000";
-		WS.url(url).get();
+		if (Application.DYNO.equals("web.1")) {
+			Logger.info("KickSleep, Host=" + Application.HOST + ", Thread=" + Thread.currentThread().getName());
+			String url = "http://" + Application.HEROKU_APPLICATION_NAME + ".herokuapp.com/application/sleep?ms=10000";
+			WS.url(url).get();
+		}
 	}
 	
 }
