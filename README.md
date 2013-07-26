@@ -8,4 +8,4 @@ Install
 
 git clone git@github.com:shunjikonishi/play-shutdown-test.git
 heroku create
-heroku config:set HEROKU_APPLICATION_NAME=<your Heroku appname>
+heroku config:set HEROKU_APPLICATION_NAME=[YOUR HEROKUAPP NAME]
