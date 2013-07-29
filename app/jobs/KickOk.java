@@ -11,7 +11,7 @@ import controllers.Application;
 public class KickOk extends Job {
 	
 	public void doJob() {
-		if (Application.DYNO.equals("web.1")) {
+		if ("web.1".equals(Application.DYNO)) {
 			Logger.info("KickOk, Host=" + Application.HOST + ", Thread=" + Thread.currentThread().getName());
 			String url = "http://" + Application.HEROKU_APPLICATION_NAME + ".herokuapp.com/application/ok";
 			WS.url(url).get();
